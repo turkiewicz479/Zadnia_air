@@ -173,6 +173,20 @@ def merge_ends(lst: Optional[List[Any]] = None) -> List[Any]:
     :param lst: lista, której końce mają zostać scalone (domyślnie None)
     :return: lista wynikowa, zawierająca elementy zgodnie ze schematem w opisie
     """
+    list=[]
+    if lst is not None:
+        leng=len(lst)
+        if leng>=4:
+            list.append(lst[0])
+            list.append(lst[1])
+            list.append(lst[-2])
+            list.append(lst[-1])
+
+        elif leng>=1:
+            list.append(lst[0])
+            list.append(lst[0])
+
+    return list
     pass
 
 
@@ -209,4 +223,7 @@ def is_palindrome(s: str) -> bool:
     :return: wartość logiczna Prawda, jeśli łańcuch znaków jest palindromem,
         inaczej wartość logiczna Fałsz
     """
+    str1 =s[::-1]
+    return str1==s
+
     pass
