@@ -5,6 +5,7 @@ from typing import List, Any, Union, Sequence, Callable, MutableSequence, Mappin
 
 
 def list_print() -> None:
+    print()
     pass
 
 
@@ -16,6 +17,11 @@ def remove_duplicates(elements: Iterable[Any]) -> List[Any]:
     Parametry:
     elements -- lista elementów, z której należy usunąć duplikaty
     """
+    list=[]
+    for x in elements:
+        if x not in list:
+            list.append(x)
+    return list
     pass
 
 
@@ -26,6 +32,11 @@ def append(elements: MutableSequence[Any] = None) -> MutableSequence[Any]:
 
     elements -- lista, do której dopisujemy
     """
+    if elements is not None:
+        elements.append("hi")
+    else:
+        elements=["hi"]
+    return elements
     pass
 
 
@@ -39,6 +50,10 @@ def sum_values(my_dict: Mapping[Any, Num]) -> Num:
     Parametry:
     my_dict -- słownik, którego wartości są sumowane
     """
+    sum1=0
+    for x,y in my_dict.items():
+        sum1+=y
+    return sum1
     pass
 
 
@@ -49,6 +64,10 @@ def filter_pesels_by_name_initial(persons: Mapping[str, str], name_initial: str)
     persons -- baza osób {PESEL -> osoba}
     name_initial -- inicjał imienia użyty do filtrowania
     """
+    initial=[]
+    for x,y in persons.items():
+        initial= [x[0], y[0]]
+    return initial
     pass
 
 
