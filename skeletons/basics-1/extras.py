@@ -19,10 +19,10 @@ def get_unique_letters(s: str) -> Set[str]:
     :return: zbiór unikalnych liter w łańcuchu znaków, jeśli łańcuch zawiera co
         najmniej 3 znaki, inaczej zbiór pusty
     """
-    unikalne=set()
+    unikalne = set()
     for letter in s:
         unikalne.add(letter)
-    if len(unikalne)>2:
+    if len(unikalne) > 2:
         return unikalne
     else:
         return set()
@@ -66,13 +66,13 @@ def products_only_on_one_list(list1: ShoppingList, list2: ShoppingList) -> int:
     :param list2: druga lista zakupowa
     :return: liczba produktów, które występują tylko na jednej z list zakupowych
     """
-    licznik=0
-    for item,amount in list1.items():
+    licznik = 0
+    for item, amount in list1.items():
         if item not in list2:
-            licznik+=1
-    for item,amount in list2.items():
+            licznik += 1
+    for item, amount in list2.items():
         if item not in list1:
-            licznik+=1
+            licznik += 1
 
     return licznik
 
@@ -88,13 +88,13 @@ def two_dice_rolls_combinations() -> Dict[int, Set[Tuple[int, int]]]:
         wyników rzutu parą kostek
     """
     koncowy = {}
-    for x in range(1,7):
-        for y in range(1,7):
-            sum=x+y
-            rzut= (x,y)
-            if sum not in koncowy:
-                koncowy[sum]=set()
-            koncowy[sum].add(rzut)
+    for x in range(1, 7):
+        for y in range(1, 7):
+            sum1 = x+y
+            rzut = (x, y)
+            if sum1 not in koncowy:
+                koncowy[sum1] = set()
+            koncowy[sum1].add(rzut)
 
     return koncowy
     pass
@@ -104,7 +104,7 @@ def append_and_sort(lst: List[str]) -> List[str]:
     """Utwórz kopię listy wejściowej, dodaj do niej element 'abc', a na koniec
         zwróć jej elementy posortowane w porządku alfabetycznym (rosnącym).
     """
-    lst2=lst.copy()
+    lst2 = lst.copy()
     lst2.append("abc")
-    lst2= sorted(lst2)
+    lst2 = sorted(lst2)
     return lst2
