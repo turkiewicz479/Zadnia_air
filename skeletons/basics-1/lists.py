@@ -96,6 +96,10 @@ def list_condition_1(lst: List[int]) -> bool:
     :param lst: lista liczb całkowitych
     :return: (zob. opis)
     """
+    both_true= False
+    if len(lst) >= 2 and lst[1] == 5:
+        both_true=True
+    return both_true
     pass
 
 
@@ -108,6 +112,11 @@ def list_condition_2(lst: List[int]) -> bool:
     :param lst: lista liczb całkowitych
     :return: (zob. opis)
     """
+    is_true = False
+    x=len(lst)
+    if (x>=2 and x<=4) and lst[x-2]==3:
+        is_true =True
+    return is_true
     pass
 
 
@@ -119,6 +128,13 @@ def remove_first_three_elements(lst: List[Any]) -> None:
 
     :param lst: lista elementów dowolnego typu
     """
+    leng = len(lst)
+    if leng>=3:
+        del lst[:3]
+    else:
+        del lst[:leng]
+
+
     pass
 
 
@@ -133,6 +149,11 @@ def replace_last_two_elements(lst: List[int]) -> List[int]:
     :param lst: lista liczb całkowitych
     :return: lista liczb po ewentualnej zamianie
     """
+    lst1 = lst.copy()
+    if len(lst)>=2:
+        del lst1[-2:]
+        lst1.append(9)
+    return lst1
     pass
 
 
@@ -169,6 +190,12 @@ def remove_element_if_exists(lst: List[Any], e: Any) -> List[Any]:
     :return: lista powstała przez usunięcie z listy wejściowej pierwszego
         wystąpienia elementu `e`
     """
+    lst1= lst.copy()
+    for x in lst1:
+        if x==e:
+            lst1.remove(x)
+    return lst1
+
     pass
 
 
