@@ -5,7 +5,7 @@ from typing import Callable, Mapping, Optional
 
 
 class Product:
-    def __init__(self, id_: str, name: str, price: float) -> None:
+    def __init__(self, id_: Optional[str], name: str, price: float) -> None:
         # TODO: Zaimplementuj.
         self.id = id_ if id_ is not None else self.generate_id(name)
         self.name = name
