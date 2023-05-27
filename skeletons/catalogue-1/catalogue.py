@@ -16,7 +16,7 @@ class Product:
         return self.__price
 
     @price.setter
-    def price(self, price: float) -> None:
+    def price( self, price: float) -> None:
         self.__price = min([price, 100])
 
     def __str__(self) -> str:
