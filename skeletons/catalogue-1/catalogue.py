@@ -15,7 +15,7 @@ class Product:
     def price(self) -> float:
         return self.__price
 
-    @price.setter
+    @ste_price
     def price(self, price: float) -> None:
         self.__price = min([price, 100])
 
