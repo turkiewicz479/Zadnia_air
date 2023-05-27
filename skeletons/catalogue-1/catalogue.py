@@ -16,20 +16,18 @@ class Product:
         return self.__price
 
     @price.setter
-    def price(self) -> None:
+    def price(self, price: float) -> None:
         self.__price = min([price, 100])
 
     def __str__(self) -> str:
         return '{self.name} [{self.id}] : ${self.price:.2f}'.format(self=self)
 
     def __eq__(self, other) -> bool:
-        return self.id == other.id and self.name == other.name and self.price == other.price
+        return (self.id == other.id) and (self.name == other.name) and (self.price == other.price)
 
     @classmethod
     def generate_id(cls, name: str) -> str:
         return ''.join([c for c in name if c != ' ']) + '_' + str(len(name))
-
-
     pass
 
 
