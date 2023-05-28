@@ -26,7 +26,7 @@ class Product:
         return (self.id == other.id) and (self.name == other.name) and (self.price == other.price)
 
     @classmethod
-    def generate_id(cls, name: str) -> str:
+    def generate_id(clas, name: str) -> str:
         return ''.join([c for c in name if c != ' ']) + '_' + str(len(name))
     pass
 
@@ -43,6 +43,14 @@ class Catalogue:
         self.inventory[product.id]= copy(product)
     def __contains__(self, id_: str)-> bool:
         return id_ in self.inventory
+
+    def get_products_with_appropriate_price(self, predicate: Callable[[float], bool]) -> Inventory:
+        return {k: v for (k, v) in self.inventory.items() if predicate(v.price)}
+
+    def get_products_by_name_part(self, chunk: str, ignore_case: bool = False) -> Inventory:
+        has_chunk = (lambda name, chunk_: chunk_.lower() in name.lower()) if ignore_case \
+            else (lambda name, chunk_: chunk_ in name)
+        return {k: v for (k, v) in self.inventory.items() if has_chunk(v.name, chunk)}
 
 
     # TODO: Zaimplementuj.
