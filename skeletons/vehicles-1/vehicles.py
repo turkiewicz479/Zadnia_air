@@ -2,11 +2,21 @@
 # -*- coding: utf-8 -*-
 
 from abc import abstractmethod
-from typing import TypeVar, Container
+from typing import TypeVar, Container\
+
+class Movable:
+    def __init__(self, x: float = 0.0, y: float = 0.0):
+        self.x = x
+        self.y = y
+
+    def move(self, dx: float, dy: float):
+        self.x = self.x + dx
+        self.y = self.y + dy
 
 
-class Vehicle:
-    def __init__(self, id_: str, brand: str) -> None:
+class Vehicle(Movable):
+    def __init__(self, id_: str, brand: str, *args, **kwargs) -> None:
+        super().__init__()
         self.id = id_
         self.brand = brand
 
@@ -51,11 +61,4 @@ def vehicle_collection_as_string(collection: Container[C]) -> str:
     return "\n".join(map(str, collection))
 
 
-class Movable:
-    def __init__(self, x: float = 0.0, y: float = 0.0):
-        self.x = x
-        self.y = y
 
-    def move(self, dx: float, dy: float):
-        self.x = self.x + dx
-        self.y = self.y + dy
