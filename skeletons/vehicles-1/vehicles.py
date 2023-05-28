@@ -44,7 +44,10 @@ def compute_min_travel_duration_as_string(distance: float, vehicle: Vehicle) -> 
 
 
 class Movable:
-    def __init__(self, x: float, y: float):
-        self.x=x
-        self.y=y
+    def __init__(self, x: float = 0.0, y: float = 0.0):
+        self.x = x
+        self.y = y
 
+    def move(self, dx: float, dy: float):
+        self.x = self.x + dx
+        self.y = self.y + dy
