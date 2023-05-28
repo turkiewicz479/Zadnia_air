@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 from typing import TypeVar, Container
 
 
@@ -47,9 +47,9 @@ def compute_min_travel_duration_as_string(distance: float, vehicle: Vehicle) -> 
 C = TypeVar('C', bound=Vehicle)
 
 
-
 def vehicle_collection_as_string(collection: Container[C]) -> str:
     return "\n".join(map(str, collection))
+
 
 class Movable:
     def __init__(self, x: float = 0.0, y: float = 0.0):
