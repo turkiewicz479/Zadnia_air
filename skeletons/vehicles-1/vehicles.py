@@ -33,3 +33,18 @@ class Bicycle(Vehicle):
 
     def max_speed(self):
         return self.n_gears * 3
+
+
+def compute_min_travel_duration(distance: float, vehicle: Vehicle) -> float:
+    return distance / vehicle.max_speed()
+
+
+def compute_min_travel_duration_as_string(distance: float, vehicle: Vehicle) -> str:
+    return "{:.3f} h".format(distance / vehicle.max_speed())
+
+
+class Movable:
+    def __init__(self, x: float, y: float):
+        self.x=x
+        self.y=y
+
