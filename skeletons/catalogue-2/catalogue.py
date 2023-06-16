@@ -6,6 +6,9 @@ from copy import copy, deepcopy
 from typing import Callable, Mapping, Optional
 
 
+class InventoryOverflowException(Exception):
+    pass
+
 class Product:
     def __init__(self, id_: Optional[str], name: str, price: float) -> None:
         self.id = id_ if id_ is not None else self.generate_id(name)
@@ -46,6 +49,8 @@ class Catalogue:
         self.inventory = deepcopy(inventory) if inventory else {}
 
     def add_product(self, product: Product) -> None:
+        if len(self.inventory) >= 2:
+            raise InventoryOverflowException("Limit of 2 products in the catalogue has been reached.")
         self.inventory[product.id] = copy(product)
 
     def __contains__(self, id_: str) -> bool:
