@@ -46,12 +46,26 @@ class Catalogue:
     Inventory = Mapping[str, Product]
 
     def __init__(self, inventory: Inventory = None) -> None:
+        if inventory is not None and len(inventory) > 2:
+            raise InventoryOverflowException("Initial inventory exceeds the limit of 2 products.")
         self.inventory = deepcopy(inventory) if inventory else {}
 
     def add_product(self, product: Product) -> None:
         if len(self.inventory) >= 2:
             raise InventoryOverflowException("Limit of 2 products in the catalogue has been reached.")
         self.inventory[product.id] = copy(product)
+
+    def add_products(self, products: List[Product]) -> int:
+        added_count = 0
+        for product in products:
+            try:
+                self.add_product(product)
+                added_count += 1
+            except InventoryOverflowException:
+                print(f"Error when adding product: {product}")
+                print("   Reason: inventory overflow")
+                break
+        return added_count
 
     def __contains__(self, id_: str) -> bool:
         return id_ in self.inventory
