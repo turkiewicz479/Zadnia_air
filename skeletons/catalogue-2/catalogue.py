@@ -3,7 +3,7 @@
 
 
 from copy import copy, deepcopy
-from typing import Callable, Mapping, Optional
+from typing import Callable, Mapping, Optional, List
 
 
 class InventoryOverflowException(Exception):
