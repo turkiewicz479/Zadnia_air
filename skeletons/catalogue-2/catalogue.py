@@ -6,11 +6,12 @@ from copy import copy, deepcopy
 from typing import Callable, Mapping, Optional, List
 
 
-class InventoryOverflowException(Exception):
-    pass
+
 
 class Product:
     def __init__(self, id_: Optional[str], name: str, price: float) -> None:
+        if len(name) > 20:
+            raise ValueError(f"Name too long ({len(name)} chars)")
         self.id = id_ if id_ is not None else self.generate_id(name)
         self.name = name
         self.price = price
@@ -35,11 +36,23 @@ class Product:
         """
         return ''.join([c for c in name if c != ' ']) + '_' + str(len(name))
 
+    @classmethod
+    def from_string(cls, string: str) -> 'Product':
+        params = {}
+        for param in string.split(';'):
+            key, value = param.split('=')
+            params[key.strip()] = value.strip()
 
-# TODO: Usuń poniższą instrukcję i zdefiniuj `InventoryOverflowException` jako wyjątek.
-# InventoryOverflowException = None
+        id_ = params.get('id')
+        name = params.get('name')
+        price = float(params.get('price', 0.0))
+
+        return cls(id_=id_, name=name, price=price)
+
+
 class InventoryOverflowException(Exception):
     pass
+
 
 
 class Catalogue:
