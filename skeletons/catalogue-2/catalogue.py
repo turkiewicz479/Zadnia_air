@@ -62,7 +62,7 @@ class Catalogue:
                 self.add_product(product)
                 added_count += 1
             except InventoryOverflowException:
-                print(f"Error when adding product: {product}")
+                print(f"Error when adding product: {str(product)}")
                 print("   Reason: inventory overflow")
                 break
         return added_count
