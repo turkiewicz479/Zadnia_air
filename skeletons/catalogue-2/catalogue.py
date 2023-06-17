@@ -38,7 +38,7 @@ class Product:
 
 # TODO: Usuń poniższą instrukcję i zdefiniuj `InventoryOverflowException` jako wyjątek.
 # InventoryOverflowException = None
-class InventoryOverflowException:
+class InventoryOverflowException(Exception):
     pass
 
 
